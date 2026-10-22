@@ -1,0 +1,8 @@
+{
+  "name": "sendora",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-01-01",
+  "assets": { "directory": "./public", "run_worker_first": ["/ws"] },
+  "durable_objects": { "bindings": [{ "name": "HUB", "class_name": "Hub" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Hub"] }]
+}
