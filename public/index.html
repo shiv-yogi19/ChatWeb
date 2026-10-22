@@ -1,0 +1,77 @@
+<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SENDORA — Created By Shiv Yogi</title>
+<style>
+:root{--bg:#0b0b14;--fg:#eef0ff;--mut:#9aa0bf;--gl:rgba(255,255,255,.07);--bd:rgba(255,255,255,.14);--ac:#8b5cf6;--me:linear-gradient(135deg,#7c3aed,#2563eb)}
+[data-theme=light]{--bg:#f3f4fb;--fg:#14141f;--mut:#555a70;--gl:rgba(255,255,255,.75);--bd:rgba(0,0,0,.14)}
+[data-theme=purple]{--bg:#120a24;--ac:#a855f7;--me:linear-gradient(135deg,#a855f7,#6d28d9)}
+[data-theme=blue]{--bg:#06121f;--ac:#38bdf8;--me:linear-gradient(135deg,#0ea5e9,#2563eb)}
+[data-theme=emerald]{--bg:#04140f;--ac:#10b981;--me:linear-gradient(135deg,#10b981,#047857)}
+[data-theme=rose]{--bg:#1a0610;--ac:#fb7185;--me:linear-gradient(135deg,#f43f5e,#be185d)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font:16px/1.4 system-ui,sans-serif;color:var(--fg);transition:background .4s;background:radial-gradient(60% 40% at 15% 0,color-mix(in srgb,var(--ac) 35%,transparent),transparent),radial-gradient(50% 40% at 100% 100%,rgba(56,189,248,.18),transparent),var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:var(--gl);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;min-height:40px;cursor:pointer}
+button.pri{background:var(--me);border:0;color:#fff}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+input,textarea,select{background:var(--gl);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;width:100%}
+[hidden]{display:none!important}
+.logo{font:800 clamp(2rem,9vw,3.4rem)/1 "Trebuchet MS",system-ui;letter-spacing:.18em;animation:rise .9s both}.logo.sm{font-size:1.6rem}
+.pulse{display:inline-block;width:.35em;height:.35em;margin-left:.3em;border-radius:50%;background:var(--ac);animation:ping 1.6s infinite}
+#intro{position:fixed;inset:0;z-index:9;display:grid;place-content:center;text-align:center;gap:.6rem;background:var(--bg);cursor:pointer}#intro.out{opacity:0;transition:opacity .35s}
+#entry{height:100%;display:grid;place-items:center;padding:16px}.card{width:min(420px,100%);display:grid;gap:12px;padding:24px;border-radius:24px;background:var(--gl);border:1px solid var(--bd);backdrop-filter:blur(20px)}
+#nerr{color:#fb7185;min-height:1.2em;font-size:.9rem}
+#app{height:100dvh;display:grid;grid-template-columns:320px 1fr;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+section{display:flex;flex-direction:column;min-height:0;background:var(--gl);border:1px solid var(--bd);backdrop-filter:blur(18px)}
+header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--bd)}header b{flex:1}
+#q{flex:1}#conn{font-size:.75rem;color:var(--mut)}#me{border-radius:50%;width:40px;padding:0}
+#users,#msgs{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:6px}
+.user{display:flex;align-items:center;gap:10px;width:100%;text-align:left;animation:pop .25s both}.user.sel{border-color:var(--ac)}
+.av{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--me);color:#fff;font-weight:700;font-size:.8rem}
+.nm{flex:1}.on{font-size:.75rem;color:#34d399}.bd{background:var(--ac);color:#fff;border-radius:99px;padding:0 8px;font-size:.8rem}
+.empty{color:var(--mut);text-align:center;padding:32px 12px}footer,small{color:var(--mut);font-size:.78rem}footer{padding:8px 12px}
+#cn{display:block}#cv{display:block}
+.b{max-width:80%;padding:8px 12px;border-radius:18px;overflow-wrap:anywhere;white-space:pre-wrap;animation:pop .2s both;border:1px solid var(--bd)}
+.b.me{align-self:flex-end;background:var(--me);color:#fff;border-bottom-right-radius:6px}.b.them{align-self:flex-start;background:var(--gl);border-bottom-left-radius:6px}
+.meta{display:block;opacity:.8;font-size:.7rem;margin-top:2px;color:inherit}.rx{margin-top:4px;font-size:.9rem}
+#typing{padding:2px 16px;color:var(--mut);font-size:.85rem}#typing span{animation:dot 1s infinite}#typing span:nth-of-type(2){animation-delay:.2s}#typing span:nth-of-type(3){animation-delay:.4s}
+#composer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd)}#in{resize:none;max-height:120px}
+#rp{position:fixed;z-index:8;display:flex;gap:4px;padding:6px;border-radius:99px;background:var(--bg);border:1px solid var(--bd);backdrop-filter:blur(20px);animation:pop .15s both}#rp button{border:0;background:none;font-size:1.3rem;padding:4px 6px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:var(--bg);border:1px solid var(--bd);padding:10px 16px;border-radius:14px;transition:.25s;z-index:10;pointer-events:none}#toast.on{opacity:1;transform:translate(-50%,0)}
+dialog{max-width:min(460px,92vw);max-height:90dvh;border:1px solid var(--bd);border-radius:20px;background:var(--bg);color:var(--fg)}dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog label{display:flex;gap:8px;align-items:center;margin:8px 0}dialog input[type=checkbox]{width:auto}.warn{color:#fbbf24}code{word-break:break-all}
+.pic{max-width:100%;max-height:260px;border-radius:12px;display:block}#pv{display:flex;gap:10px;align-items:center;padding:8px 10px;border-top:1px solid var(--bd)}.off{font-size:.75rem;color:var(--mut)}#composer button{padding:8px}
+#back,#phead{display:none}
+@media(max-width:719px){#app{grid-template-columns:1fr}#chat{display:none}.chatting #chat{display:flex}.chatting #list{display:none}#back{display:inline-block}}
+@keyframes rise{from{opacity:0;transform:scale(.9)}}@keyframes pop{from{opacity:0;transform:translateY(6px)}}@keyframes ping{50%{opacity:.3;transform:scale(1.5)}}@keyframes dot{50%{opacity:.2;transform:translateY(-3px)}}
+.rm *,.rm *::before{animation:none!important;transition:none!important}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{background:#fff!important;color:#000!important}#list,#chat>header,#composer,#typing,#rp,#toast,#intro{display:none!important}
+#app{display:block;height:auto}#chat{display:block!important;border:0;background:none;backdrop-filter:none}#msgs{overflow:visible}.b{max-width:100%;color:#000!important;background:none!important;border:1px solid #888;break-inside:avoid}.b.me{border-style:dashed}
+#phead{display:block;border-bottom:2px solid #000;margin-bottom:12px}}
+</style></head><body>
+<div id="intro"><div class="logo">SENDORA<i class="pulse"></i></div><div>Created By Shiv Yogi</div><div id="tag" aria-live="polite"></div></div>
+<main id="entry" hidden><div class="card"><div class="logo sm">SENDORA</div><h1>Welcome. Pick a name to start.</h1>
+<input id="nm" maxlength="24" placeholder="Display name" autocomplete="off" aria-label="Display name"><div id="nerr" role="alert"></div>
+<button id="cont" class="pri">Continue</button><button id="rnd">Generate Random Name</button>
+<small>No account, email or phone number. A private key is created in this browser and messages are encrypted here before they leave. Clearing browser data destroys the key and your identity.</small><small>Created By Shiv Yogi</small></div></main>
+<div id="app" hidden>
+<section id="list"><header><b>🌐 Global</b><input id="q" type="search" hidden placeholder="Search name or identity" aria-label="Search users"><button id="sbtn" aria-label="Search users">🔍</button><span id="conn" role="status"></span><button id="me" aria-label="Settings"></button></header>
+<div id="users"></div><footer>SENDORA · Created By Shiv Yogi</footer></section>
+<section id="chat"><div id="phead"></div><header><button id="back" aria-label="Back to user list">←</button><div style="flex:1"><b id="cn"></b><small id="cv"></small></div><button id="mu" aria-label="Mute conversation">🔔</button><button id="vf">Verify</button><button id="dc" aria-label="Delete this chat">🗑</button><button id="pr" aria-label="Print conversation">🖨</button><button id="bl" aria-label="Block user">🚫</button></header>
+<div id="msgs" aria-live="polite"></div><div id="typing" hidden>Typing<span>.</span><span>.</span><span>.</span></div>
+<div id="pv" hidden><img id="pvi" alt="Image preview" class="pic"><div><button id="pvs" class="pri">Send image</button> <button id="pvc">Cancel</button></div></div>
+<div id="composer"><button id="att" aria-label="Attach image">📎</button><button id="loc" aria-label="Share location">📍</button><input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden><textarea id="in" rows="1" maxlength="2000" placeholder="Message" aria-label="Message"></textarea><button id="send" class="pri">Send</button></div></section></div>
+<dialog id="set"><h2>Settings</h2>
+<label>Theme <select id="th"><option value="dark">Dark</option><option value="light">Light</option><option value="purple">Purple Glow</option><option value="blue">Cyber Blue</option><option value="emerald">Emerald</option><option value="rose">Rose Neon</option></select></label>
+<label><input type="checkbox" id="rr"> Send read receipts</label><label><input type="checkbox" id="rm"> Reduce motion</label>
+<label><input type="checkbox" id="snd"> Message sound</label><label><input type="checkbox" id="vib"> Vibration</label><label><input type="checkbox" id="nt"> Browser notifications (only while a SENDORA tab is open; no push when closed; shows no message text)</label>
+<p><small id="tr"></small></p>
+<label>Display name <input id="sn" maxlength="24"></label><button id="svn">Save name</button>
+<p>Identity Number<br><code id="idn"></code> <button id="cp">Copy</button></p>
+<p class="warn">Keep your identity information private. Never share private keys or security secrets.</p>
+<small>Your private key stays in this browser. Clearing browser data destroys it and creates a new identity; there is no recovery. A display name is not proof of identity. Chats live only in this tab's memory.</small>
+<h3>Blocked</h3><div id="bk"></div><p id="cs" role="status"></p>
+<button id="dl">Delete local chats</button> <button id="ci">Clear identity</button> <button id="cl" class="pri">Close</button>
+<p><small>SENDORA v0.1 · Created By Shiv Yogi</small></p></dialog>
+<div id="rp" hidden role="menu"></div><div id="toast" role="status"></div>
+<script type="module" src="js/app.js"></script></body></html>
